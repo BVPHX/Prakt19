@@ -1,0 +1,57 @@
+﻿<Window x:Class="Prakt19.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Prakt19"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="472.131" Width="800">
+    <Grid>
+        <Menu VerticalAlignment="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Добавить запись" Click="AddRecord_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Вид">
+                <MenuItem Header="Обновить" Click="Refresh_Click"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Сортировка по имени"></MenuItem>
+                <MenuItem Header="Сортировка по Рейтингу №1" Click="SortRating1_click"></MenuItem>
+                <MenuItem Header="Сортировка по Рейтингу №2" Click="SortRating2_click"></MenuItem>
+                <MenuItem Header="Сортировка по Рейтингу №3" Click="SortRating3_click"></MenuItem>
+                <MenuItem Header="Сортировка по Рейтингу №4" Click="SortRating4_click"></MenuItem>
+                <MenuItem Header="Сортировка по Рейтингу №5" Click="SortRating5_click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Выход" Click="Exit_Click"></MenuItem>
+
+        </Menu>
+        <GroupBox Header="Таблица товаров" VerticalAlignment="Top" Margin="0,20,0,0" Height="300" Width="750">
+            <DataGrid SelectedCellsChanged="GridSelectionChanged" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="True" x:Name="mainGrid" CanUserDeleteRows="False" IsReadOnly="True" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Номер игрока" Binding="{Binding PlayerID}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Пол" Binding="{Binding Gender}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Дата рождения" Binding="{Binding BrithDate, StringFormat=d}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Имя тренера" Binding="{Binding TrainerFirstName}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Фамилия тренера" Binding="{Binding TrainerLastName}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Отчество тренера" Binding="{Binding TrainerMiddleName}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Название страны" Binding="{Binding CountryName}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Рейтинг №1" Binding="{Binding Rating1}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Рейтинг №2" Binding="{Binding Rating2}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Рейтинг №3" Binding="{Binding Rating3}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Рейтинг №4" Binding="{Binding Rating4}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Рейтинг №5" Binding="{Binding Rating5}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+        <GroupBox Header="Управление таблицей" VerticalAlignment="Top" Margin="25,325,444,0" Height="99">
+            <StackPanel>
+                <Button x:Name="bAdd" Content="Добавить запись" Margin="0,5,0,0" Click="AddRecord_Click"/>
+                <Button x:Name="bChange"  Content="Изменить запись" Margin="0,5,0,0" Height="20" Click="ChangeRecord_Click"/>
+                <Button x:Name="bDelete" Content="Удалить запись" Margin="0,5,0,0" Height="20" Click="DeleteRecord_Click"></Button>
+            </StackPanel>
+
+        </GroupBox>
+    </Grid>
+</Window>

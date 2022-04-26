@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище TennisRatingModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="PlayerID" />
+          </Key>
+          <Property Name="PlayerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="BrithDate" Type="date" Nullable="false" />
+          <Property Name="TrainerFirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TrainerLastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TrainerMiddleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Rating1" Type="int" Nullable="false" />
+          <Property Name="Rating2" Type="int" Nullable="false" />
+          <Property Name="Rating3" Type="int" Nullable="false" />
+          <Property Name="Rating4" Type="int" Nullable="false" />
+          <Property Name="Rating5" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Хранилище TennisRatingModelContainer">
+          <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TennisRatingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="PlayerID" />
+          </Key>
+          <Property Name="PlayerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BrithDate" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="TrainerFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TrainerLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TrainerMiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rating1" Type="Int32" Nullable="false" />
+          <Property Name="Rating2" Type="Int32" Nullable="false" />
+          <Property Name="Rating3" Type="Int32" Nullable="false" />
+          <Property Name="Rating4" Type="Int32" Nullable="false" />
+          <Property Name="Rating5" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="TennisRatingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Rating" EntityType="Self.Rating" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TennisRatingModelContainer" CdmEntityContainer="TennisRatingEntities">
+          <EntitySetMapping Name="Rating">
+            <EntityTypeMapping TypeName="TennisRatingModel.Rating">
+              <MappingFragment StoreEntitySet="Rating">
+                <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BrithDate" ColumnName="BrithDate" />
+                <ScalarProperty Name="TrainerFirstName" ColumnName="TrainerFirstName" />
+                <ScalarProperty Name="TrainerLastName" ColumnName="TrainerLastName" />
+                <ScalarProperty Name="TrainerMiddleName" ColumnName="TrainerMiddleName" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="Rating1" ColumnName="Rating1" />
+                <ScalarProperty Name="Rating2" ColumnName="Rating2" />
+                <ScalarProperty Name="Rating3" ColumnName="Rating3" />
+                <ScalarProperty Name="Rating4" ColumnName="Rating4" />
+                <ScalarProperty Name="Rating5" ColumnName="Rating5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
