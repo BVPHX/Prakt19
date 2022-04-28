@@ -24,10 +24,14 @@ namespace Prakt19
 
         public TennisRatingDB db = new TennisRatingDB();
         AddProd add;
-        EditRecord editRecord = new EditRecord();
+        EditRecord editRecord;
+        AuthWin auth;
         public MainWindow()
         {
             InitializeComponent();
+            auth = new AuthWin();
+            if (auth.ShowDialog() == false) Close();
+            Title ="База данных <Рейтинг теннисистов>. Пользователь:" + auth.tbLoginInput.Text;
             db.Rating.Load();
             mainGrid.ItemsSource = db.Rating.Local.ToBindingList();
             if (mainGrid.SelectedIndex == -1)

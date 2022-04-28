@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Хранилище TennisRatingModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "TennisRating.dbo.Auth" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Auth">
+          <Key>
+            <PropertyRef Name="UserLogin" />
+            
+          </Key>
+          <Property Name="UserLogin" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Rating">
           <Key>
             <PropertyRef Name="PlayerID" />
@@ -27,6 +37,12 @@
         </EntityType>
         <EntityContainer Name="Хранилище TennisRatingModelContainer">
           <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Auth" EntityType="Self.Auth" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Auth].[UserLogin] AS [UserLogin], 
+    [Auth].[UserPassword] AS [UserPassword]
+    FROM [dbo].[Auth] AS [Auth]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -54,7 +70,15 @@
         </EntityType>
         <EntityContainer Name="TennisRatingEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Rating" EntityType="Self.Rating" />
+          <EntitySet Name="Auth" EntityType="TennisRatingModel.Auth" />
         </EntityContainer>
+        <EntityType Name="Auth">
+          <Key>
+            <PropertyRef Name="UserLogin" />
+          </Key>
+          <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserLogin" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -79,6 +103,14 @@
                 <ScalarProperty Name="Rating3" ColumnName="Rating3" />
                 <ScalarProperty Name="Rating4" ColumnName="Rating4" />
                 <ScalarProperty Name="Rating5" ColumnName="Rating5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Auth">
+            <EntityTypeMapping TypeName="TennisRatingModel.Auth">
+              <MappingFragment StoreEntitySet="Auth">
+                <ScalarProperty Name="UserLogin" ColumnName="UserLogin" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

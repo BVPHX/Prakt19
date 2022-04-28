@@ -24,13 +24,8 @@ namespace Prakt19
         {
             throw new UnintentionalCodeFirstException();
         }
-        private static TennisRatingDB context;
-        public static TennisRatingDB GetContext()
-        {
-            if (context == null)
-                context = new TennisRatingDB();
-            return context;
-        }
+    
         public virtual DbSet<Rating> Rating { get; set; }
+        public virtual DbSet<Auth> Auth { get; set; }
     }
 }

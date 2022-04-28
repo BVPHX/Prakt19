@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="47c059e435924af084c69979e534745b" Name="Diagram1">
         <EntityTypeShape EntityType="TennisRatingModel.Rating" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TennisRatingModel.Auth" Width="1.5" PointX="4.875" PointY="1.25" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
